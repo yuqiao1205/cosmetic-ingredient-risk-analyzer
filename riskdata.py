@@ -24,11 +24,11 @@ RISK_DB = {
         "impact": "Inert but may accumulate in body over long-term exposure"
     },
     "phenoxyethanol": {
-        "risk": "High",
+        "risk": "Medium",
         "impact": "Preservative; can cause skin irritation, allergic reactions, toxic at high doses"
     },
     "fragrance": {
-        "risk": "High",
+        "risk": "Medium",
         "impact": "Common allergen; may cause irritation, headaches, endocrine disruption"
     },
     "ethylhexyl methoxycinnamate": {
@@ -206,5 +206,225 @@ RISK_DB = {
     "cocoglycerides": {
         "risk": "Low",
         "impact": "Cocoglycerides act as emollients and skin conditioning agents, enhancing moisture and texture in cosmetic formulations. Generally considered safe."
+    },
+    "aqua": {
+        "risk": "Low",
+        "impact": "Aqua, or water, serves as a solvent in cosmetics, aiding in formulation and hydration; it's generally safe for use."
+    },
+    "propylene glycol dicaprylate/dicaprate": {
+        "risk": "Low",
+        "impact": "Propylene Glycol Dicaprylate/Dicaprate acts as an emollient and skin-conditioning agent, enhancing texture and moisture in cosmetics. Generally considered safe."
+    },
+    "cetearyl alcohol": {
+        "risk": "Low",
+        "impact": "Cetearyl Alcohol acts as an emollient and emulsifier, providing moisture and stability in cosmetic formulations. It's generally considered safe."
+    },
+    "pentylene glycol": {
+        "risk": "Low",
+        "impact": "Pentylene Glycol acts as a humectant and solvent, enhancing moisture retention and product texture in cosmetics. Generally considered safe."
+    },
+    "caprylic/capric triglyceride": {
+        "risk": "Low",
+        "impact": "Caprylic/Capric Triglyceride acts as an emollient and skin-conditioning agent, enhancing texture and moisture in cosmetics. It's considered safe."
+    },
+    "ethylhexyl palmitate": {
+        "risk": "Low",
+        "impact": "Ethylhexyl Palmitate acts as an emollient and skin-conditioning agent, enhancing texture and moisture in cosmetic formulations."
+    },
+    "c10-18 triglycerides": {
+        "risk": "Low",
+        "impact": "C10-18 Triglycerides act as emollients, providing moisture and improving skin texture in cosmetic formulations. Generally considered safe."
+    },
+    "betaine": {
+        "risk": "Low",
+        "impact": "Betaine acts as a humectant and skin-conditioning agent, enhancing moisture retention and improving skin texture. It's generally considered safe."
+    },
+    "polyglycerin-3": {
+        "risk": "Low",
+        "impact": "Polyglycerin-3 acts as a humectant and emulsifier, enhancing moisture retention and product stability in cosmetics. Generally considered safe."
+    },
+    "nelumbo nucifera extract": {
+        "risk": "Low",
+        "impact": "Nelumbo Nucifera Extract hydrates, soothes, and provides antioxidant benefits in cosmetics, with a good safety profile for skin use."
+    },
+    "citrus limon  peel oil": {
+        "risk": "Low",
+        "impact": "Citrus Limon Peel Oil primarily acts as a fragrance and skin-conditioning agent in cosmetics, offering refreshing scent and potential antimicrobial properties."
+    },
+    "averrhoa carambola leaf extract": {
+        "risk": "Low",
+        "impact": "Averrhoa Carambola Leaf Extract primarily acts as an antioxidant and anti-inflammatory agent in cosmetics, promoting skin health and protection."
+    },
+    "cucumis sativus  fruit extract": {
+        "risk": "Low",
+        "impact": "Cucumis Sativus Fruit Extract hydrates and soothes skin, providing antioxidant benefits; generally considered safe for cosmetic use."
+    },
+    "helianthus annuus  seed oil": {
+        "risk": "Low",
+        "impact": "Helianthus Annuus Seed Oil moisturizes and nourishes skin; it's generally safe and non-irritating for most skin types."
+    },
+    "tocopherol": {
+        "risk": "Low",
+        "impact": "Tocopherol, a form of vitamin E, acts as an antioxidant in cosmetics, protecting skin from free radical damage."
+    },
+    "cetearyl glucoside": {
+        "risk": "Low",
+        "impact": "Cetearyl Glucoside acts as an emulsifier, stabilizing formulations and enhancing texture, with a good safety profile in cosmetics."
+    },
+    "sorbitol": {
+        "risk": "Low",
+        "impact": "Sorbitol acts as a humectant, attracting moisture to the skin, and is generally considered safe in cosmetic formulations."
+    },
+    "caprylyl glycol": {
+        "risk": "Low",
+        "impact": "Caprylyl Glycol acts as a skin-conditioning agent and preservative, enhancing moisture and product stability. Generally considered safe."
+    },
+    "potassium cetyl phosphate": {
+        "risk": "Low",
+        "impact": "Potassium Cetyl Phosphate acts as an emulsifier and stabilizer in cosmetics, enhancing texture and product consistency. It's considered safe."
+    },
+    "carbomer": {
+        "risk": "Low",
+        "impact": "Carbomer thickens and stabilizes formulations; it's considered safe for use in cosmetics with low irritation potential."
+    },
+    "sodium pca": {
+        "risk": "Low",
+        "impact": "Sodium PCA is a humectant that attracts moisture, enhancing skin hydration and softness in cosmetic formulations. It's generally considered safe."
+    },
+    "cetyl alcohol": {
+        "risk": "Low",
+        "impact": "Cetyl Alcohol acts as an emollient and emulsifier, providing texture and stability in cosmetic formulations. It's generally considered safe."
+    },
+    "stearyl alcohol": {
+        "risk": "Low",
+        "impact": "Stearyl Alcohol acts as an emollient and emulsifier, providing texture and moisture in cosmetic formulations. Generally considered safe."
+    },
+    "pentaerythrityl tetraisostearate": {
+        "risk": "Low",
+        "impact": "Pentaerythrityl Tetraisostearate acts as an emollient and thickener, enhancing texture and moisture in cosmetic formulations. Safe for use."
+    },
+    "xanthan gum": {
+        "risk": "Low",
+        "impact": "Xanthan Gum thickens and stabilizes formulations; it's considered safe for cosmetic use with low irritation potential."
+    },
+    "sodium polyglutamate": {
+        "risk": "Low",
+        "impact": "Sodium Polyglutamate acts as a moisturizer and humectant, enhancing skin hydration and texture in cosmetic formulations. It's considered safe."
+    },
+    "sodium phytate": {
+        "risk": "Low",
+        "impact": "Sodium Phytate acts as a chelating agent, stabilizing formulations by binding metal ions and enhancing product efficacy. Safe for use."
+    },
+    "propanediol": {
+        "risk": "Low",
+        "impact": "Propanediol acts as a solvent and humectant, enhancing product texture and moisture retention; generally considered safe for cosmetic use."
+    },
+    "sodium metabisulfite": {
+        "risk": "Low",
+        "impact": "Sodium Metabisulfite acts as a preservative and antioxidant in cosmetics, preventing oxidation and extending product shelf life. Generally safe in low concentrations."
+    },
+    "citric acid": {
+        "risk": "Low",
+        "impact": "Citric acid in cosmetics primarily acts as a pH adjuster and mild exfoliant for smoother skin."
+    },
+    "3-o-ethyl ascorbic acid": {
+        "risk": "Low",
+        "impact": "3-O-Ethyl Ascorbic Acid is a potent, stable form of Vitamin C that primarily boosts collagen production and antioxidant protection."
+    },
+    "palmitoyl tripeptide-5": {
+        "risk": "Low",
+        "impact": "Palmitoyl Tripeptide-5 stimulates collagen production, reducing wrinkles and improving skin firmness in cosmetics. Generally safe."
+    },
+    "glycyrrhiza glabra  root extract": {
+        "risk": "Low",
+        "impact": "Glycyrrhiza glabra root extract soothes, hydrates, and reduces inflammation, primarily for sensitive and irritated skin."
+    },
+    "squalane": {
+        "risk": "Low",
+        "impact": "Squalane is a moisturizing emollient that softens and smooths skin, providing a protective barrier. It\u2019s generally considered very safe."
+    },
+    "pseudozyma epicola/camellia japonica seed oil ferment extract filtrate": {
+        "risk": "Low",
+        "impact": "This ferment filtrate brightens, hydrates, and soothes skin by boosting hyaluronic acid production for a plump, youthful appearance."
+    },
+    "pseudozyma epicola/camellia sinensis seed oil/glucose/malt extract/soybean flour/yeast extract ferment filtrate": {
+        "risk": "Low",
+        "impact": "This blend primarily boosts skin hydration and radiance through fermentation, offering gentle antioxidant and nourishing benefits."
+    },
+    "glycine soja  oil": {
+        "risk": "Low",
+        "impact": "Glycine Soja Oil (soybean oil) primarily hydrates and softens skin due to its emollient properties, generally considered safe."
+    },
+    "lecithin": {
+        "risk": "Low",
+        "impact": "Lecithin, primarily an emulsifier and emollient, helps blend & soften cosmetic formulations, generally considered safe for use."
+    },
+    "bisabolol": {
+        "risk": "Low",
+        "impact": "Bisabolol soothes, reduces redness, and calms irritated skin, offering anti-inflammatory benefits in cosmetics."
+    },
+    "pullulan": {
+        "risk": "Low",
+        "impact": "Pullulan is a film-forming agent, creating a smooth, protective layer on the skin for enhanced delivery and hydration."
+    },
+    "sclerotium gum": {
+        "risk": "Low",
+        "impact": "Sclerotium Gum is a natural thickener and stabilizer, enhancing texture and preventing ingredient separation in cosmetics."
+    },
+    "acacia senegal gum": {
+        "risk": "Low",
+        "impact": "Acacia Senegal Gum stabilizes emulsions and thickens cosmetic formulations, offering a safe and natural thickening agent."
+    },
+    "hydrogenated farnesene": {
+        "risk": "Low",
+        "impact": "Hydrogenated Farnesene is a silicone-like emollient that provides a silky-smooth, non-greasy feel to cosmetic formulations."
+    },
+    "polyacrylate crosspolymer-6": {
+        "risk": "Low",
+        "impact": "Polyacrylate Crosspolymer-6: Primarily a thickener & film former, creating a smooth, lightweight, and lasting cosmetic film. Generally safe."
+    },
+    "hydroxyethyl acrylate/ sodium acryloyldimethyl taurate copolymer": {
+        "risk": "Low",
+        "impact": "This copolymer provides film formation and thickening, improving texture and adhesion in cosmetic formulations. Generally considered safe."
+    },
+    "polyglyceryl-4 laurate/succinate": {
+        "risk": "Low",
+        "impact": "Polyglyceryl-4 Laurate/Succinate: Primarily a mild emulsifier and foam booster, improving texture and stability in formulations. Generally safe."
+    },
+    "glyceryl stearate": {
+        "risk": "Low",
+        "impact": "Glyceryl Stearate is a thickener and emulsifier, stabilizing formulations and improving texture in cosmetics. Generally considered safe."
+    },
+    "c14-22 alcohols": {
+        "risk": "Low",
+        "impact": "C14-22 Alcohols is a viscosity-adjusting emollient, contributing to a smooth, creamy texture in cosmetic formulations."
+    },
+    "c12-20 alkyl glucoside": {
+        "risk": "Low",
+        "impact": "C12-20 Alkyl Glucoside: A gentle, mild surfactant primarily used for cleansing and foaming in cosmetic formulations."
+    },
+    "dimethyl isosorbide": {
+        "risk": "Low",
+        "impact": "Dimethyl isosorbide is a common emollient and solvent, providing texture and enhancing the delivery of other ingredients in cosmetics."
+    },
+    "hexylene glycol": {
+        "risk": "Low",
+        "impact": "Hexylene glycol acts as a solvent & viscosity reducer, helping to blend and stabilize cosmetic formulations. Generally safe at low concentrations."
+    },
+    "ethoxydiglycol": {
+        "risk": "Low",
+        "impact": "Ethoxydiglycol is a humectant & solvent, helping to hydrate and dissolve other ingredients in cosmetic formulations."
+    },
+    "sodium citrate": {
+        "risk": "Low",
+        "impact": "Sodium citrate primarily acts as a pH adjuster and emulsifier in cosmetics, ensuring stability and texture. Generally safe for use."
+    },
+    "tetrasodium glutamate diacetate": {
+        "risk": "Low",
+        "impact": "Tetrasodium glutamate diacetate is a biodegradable chelating agent, primarily used to bind and remove metal ions for improved product stability."
+    },
+    "ethylhexylglycerin": {
+        "risk": "Low",
+        "impact": "Ethylhexylglycerin primarily functions as a preservative booster & skin-conditioning agent, enhancing product stability & hydration."
     }
 }

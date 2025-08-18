@@ -16,11 +16,18 @@ from riskdata import RISK_DB  # our JSON-style dataset
 # =========================
 # Config & Setup
 # =========================
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-llm = OpenAI(model="gpt-4o-mini", temperature=0.2)
+from llama_index.llms.ollama import Ollama
+
+llm = Ollama(model="gemma3", request_timeout=120.0)
 Settings.llm = llm
+
+# Load OpenAI key from .env
+# load_dotenv()
+# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+
+# llm = OpenAI(model="gpt-4o-mini", temperature=0.2)
+# Settings.llm = llm
 
 CHROMA_PATH = "./chroma_db"
 

@@ -1,0 +1,291 @@
+ None = None,
+        api_description: str | None | Literal[False] = None,
+    
+        ) -> Dependency:
+        """
+        Parameters:
+            fn: the function to call when this event is triggered. Often a machine learning model's prediction function. Each parameter of the function corresponds to one input component, and the function should return a single value or a tuple of values, with each element in the tuple corresponding to one output component.
+            inputs: list of gradio.components to use as inputs. If the function takes no inputs, this should be an empty list.
+            outputs: list of gradio.components to use as outputs. If the function returns no outputs, this should be an empty list.
+            api_name: defines how the endpoint appears in the API docs. Can be a string, None, or False. If False, the endpoint will not be exposed in the api docs. If set to None, will use the functions name as the endpoint route. If set to a string, the endpoint will be exposed in the api docs with the given name.
+            scroll_to_output: if True, will scroll to output component on completion
+            show_progress: how to show the progress animation while event is running: "full" shows a spinner which covers the output component area as well as a runtime display in the upper right corner, "minimal" only shows the runtime display, "hidden" shows no progress animation at all
+            show_progress_on: Component or list of components to show the progress animation on. If None, will show the progress animation on all of the output components.
+            queue: if True, will place the request on the queue, if the queue has been enabled. If False, will not put this event on the queue, even if the queue has been enabled. If None, will use the queue setting of the gradio app.
+            batch: if True, then the function should process a batch of inputs, meaning that it should accept a list of input values for each parameter. The lists should be of equal length (and be up to length `max_batch_size`). The function is then *required* to return a tuple of lists (even if there is only 1 output component), with each list in the tuple corresponding to one output component.
+            max_batch_size: maximum number of inputs to batch together if this is called from the queue (only relevant if batch=True)
+            preprocess: if False, will not run preprocessing of component data before running 'fn' (e.g. leaving it as a base64 string if this method is called with the `Image` component).
+            postprocess: if False, will not run postprocessing of component data before returning 'fn' output to the browser.
+            cancels: a list of other events to cancel when this listener is triggered. For example, setting cancels=[click_event] will cancel the click_event, where click_event is the return value of another components .click method. Functions that have not yet run (or generators that are iterating) will be cancelled, but functions that are currently running will be allowed to finish.
+            every: continously calls `value` to recalculate it if `value` is a function (has no effect otherwise). Can provide a Timer whose tick resets `value`, or a float that provides the regular interval for the reset Timer.
+            trigger_mode: if "once" (default for all events except `.change()`) would not allow any submissions while an event is pending. If set to "multiple", unlimited submissions are allowed while pending, and "always_last" (default for `.change()` and `.key_up()` events) would allow a second submission after the pending event is complete.
+            js: optional frontend js method to run before running 'fn'. Input arguments for js method are values of 'inputs' and 'outputs', return should be a list of values for output components.
+            concurrency_limit: if set, this is the maximum number of this event that can be running simultaneously. Can be set to None to mean no concurrency_limit (any number of this event can be running simultaneously). Set to "default" to use the default concurrency limit (defined by the `default_concurrency_limit` parameter in `Blocks.queue()`, which itself is 1 by default).
+            concurrency_id: if set, this is the id of the concurrency group. Events with the same concurrency_id will be limited by the lowest set concurrency_limit.
+            show_api: whether to show this event in the "view API" page of the Gradio app, or in the ".view_api()" method of the Gradio clients. Unlike setting api_name to False, setting show_api to False will still allow downstream apps as well as the Clients to use this event. If fn is None, show_api will automatically be set to False.
+            key: A unique key for this event listener to be used in @gr.render(). If set, this value identifies an event as identical across re-renders when the key is identical.
+            api_description: Description of the API endpoint. Can be a string, None, or False. If set to a string, the endpoint will be exposed in the API docs with the given description. If None, the function's docstring will be used as the API endpoint description. If False, then no description will be displayed in the API docs.
+        
+        """
+        ...
+    
+    def delete(self,
+        fn: Callable[..., Any] | None = None,
+        inputs: Block | Sequence[Block] | set[Block] | None = None,
+        outputs: Block | Sequence[Block] | None = None,
+        api_name: str | None | Literal[False] = None,
+        scroll_to_output: bool = False,
+        show_progress: Literal["full", "minimal", "hidden"] = "full",
+        show_progress_on: Component | Sequence[Component] | None = None,
+        queue: bool | None = None,
+        batch: bool = False,
+        max_batch_size: int = 4,
+        preprocess: bool = True,
+        postprocess: bool = True,
+        cancels: dict[str, Any] | list[dict[str, Any]] | None = None,
+        every: Timer | float | None = None,
+        trigger_mode: Literal["once", "multiple", "always_last"] | None = None,
+        js: str | Literal[True] | None = None,
+        concurrency_limit: int | None | Literal["default"] = "default",
+        concurrency_id: str | None = None,
+        show_api: bool = True,
+        key: int | str | tuple[int | str, ...] | None = None,
+        api_description: str | None | Literal[False] = None,
+    
+        ) -> Dependency:
+        """
+        Parameters:
+            fn: the function to call when this event is triggered. Often a machine learning model's prediction function. Each parameter of the function corresponds to one input component, and the function should return a single value or a tuple of values, with each element in the tuple corresponding to one output component.
+            inputs: list of gradio.components to use as inputs. If the function takes no inputs, this should be an empty list.
+            outputs: list of gradio.components to use as outputs. If the function returns no outputs, this should be an empty list.
+            api_name: defines how the endpoint appears in the API docs. Can be a string, None, or False. If False, the endpoint will not be exposed in the api docs. If set to None, will use the functions name as the endpoint route. If set to a string, the endpoint will be exposed in the api docs with the given name.
+            scroll_to_output: if True, will scroll to output component on completion
+            show_progress: how to show the progress animation while event is running: "full" shows a spinner which covers the output component area as well as a runtime display in the upper right corner, "minimal" only shows the runtime display, "hidden" shows no progress animation at all
+            show_progress_on: Component or list of components to show the progress animation on. If None, will show the progress animation on all of the output components.
+            queue: if True, will place the request on the queue, if the queue has been enabled. If False, will not put this event on the queue, even if the queue has been enabled. If None, will use the queue setting of the gradio app.
+            batch: if True, then the function should process a batch of inputs, meaning that it should accept a list of input values for each parameter. The lists should be of equal length (and be up to length `max_batch_size`). The function is then *required* to return a tuple of lists (even if there is only 1 output component), with each list in the tuple corresponding to one output component.
+            max_batch_size: maximum number of inputs to batch together if this is called from the queue (only relevant if batch=True)
+            preprocess: if False, will not run preprocessing of component data before running 'fn' (e.g. leaving it as a base64 string if this method is called with the `Image` component).
+            postprocess: if False, will not run postprocessing of component data before returning 'fn' output to the browser.
+            cancels: a list of other events to cancel when this listener is triggered. For example, setting cancels=[click_event] will cancel the click_event, where click_event is the return value of another components .click method. Functions that have not yet run (or generators that are iterating) will be cancelled, but functions that are currently running will be allowed to finish.
+            every: continously calls `value` to recalculate it if `value` is a function (has no effect otherwise). Can provide a Timer whose tick resets `value`, or a float that provides the regular interval for the reset Timer.
+            trigger_mode: if "once" (default for all events except `.change()`) would not allow any submissions while an event is pending. If set to "multiple", unlimited submissions are allowed while pending, and "always_last" (default for `.change()` and `.key_up()` events) would allow a second submission after the pending event is complete.
+            js: optional frontend js method to run before running 'fn'. Input arguments for js method are values of 'inputs' and 'outputs', return should be a list of values for output components.
+            concurrency_limit: if set, this is the maximum number of this event that can be running simultaneously. Can be set to None to mean no concurrency_limit (any number of this event can be running simultaneously). Set to "default" to use the default concurrency limit (defined by the `default_concurrency_limit` parameter in `Blocks.queue()`, which itself is 1 by default).
+            concurrency_id: if set, this is the id of the concurrency group. Events with the same concurrency_id will be limited by the lowest set concurrency_limit.
+            show_api: whether to show this event in the "view API" page of the Gradio app, or in the ".view_api()" method of the Gradio clients. Unlike setting api_name to False, setting show_api to False will still allow downstream apps as well as the Clients to use this event. If fn is None, show_api will automatically be set to False.
+            key: A unique key for this event listener to be used in @gr.render(). If set, this value identifies an event as identical across re-renders when the key is identical.
+            api_description: Description of the API endpoint. Can be a string, None, or False. If set to a string, the endpoint will be exposed in the API docs with the given description. If None, the function's docstring will be used as the API endpoint description. If False, then no description will be displayed in the API docs.
+        
+        """
+        ...
+    
+    def download(self,
+        fn: Callable[..., Any] | None = None,
+        inputs: Block | Sequence[Block] | set[Block] | None = None,
+        outputs: Block | Sequence[Block] | None = None,
+        api_name: str | None | Literal[False] = None,
+        scroll_to_output: bool = False,
+        show_progress: Literal["full", "minimal", "hidden"] = "full",
+        show_progress_on: Component | Sequence[Component] | None = None,
+        queue: bool | None = None,
+        batch: bool = False,
+        max_batch_size: int = 4,
+        preprocess: bool = True,
+        postprocess: bool = True,
+        cancels: dict[str, Any] | list[dict[str, Any]] | None = None,
+        every: Timer | float | None = None,
+        trigger_mode: Literal["once", "multiple", "always_last"] | None = None,
+        js: str | Literal[True] | None = None,
+        concurrency_limit: int | None | Literal["default"] = "default",
+        concurrency_id: str | None = None,
+        show_api: bool = True,
+        key: int | str | tuple[int | str, ...] | None = None,
+        api_description: str | None | Literal[False] = None,
+    
+        ) -> Dependency:
+        """
+        Parameters:
+            fn: the function to call when this event is triggered. Often a machine learning model's prediction function. Each parameter of the function corresponds to one input component, and the function should return a single value or a tuple of values, with each element in the tuple corresponding to one output component.
+            inputs: list of gradio.components to use as inputs. If the function takes no inputs, this should be an empty list.
+            outputs: list of gradio.components to use as outputs. If the function returns no outputs, this should be an empty list.
+            api_name: defines how the endpoint appears in the API docs. Can be a string, None, or False. If False, the endpoint will not be exposed in the api docs. If set to None, will use the functions name as the endpoint route. If set to a string, the endpoint will be exposed in the api docs with the given name.
+            scroll_to_output: if True, will scroll to output component on completion
+            show_progress: how to show the progress animation while event is running: "full" shows a spinner which covers the output component area as well as a runtime display in the upper right corner, "minimal" only shows the runtime display, "hidden" shows no progress animation at all
+            show_progress_on: Component or list of components to show the progress animation on. If None, will show the progress animation on all of the output components.
+            queue: if True, will place the request on the queue, if the queue has been enabled. If False, will not put this event on the queue, even if the queue has been enabled. If None, will use the queue setting of the gradio app.
+            batch: if True, then the function should process a batch of inputs, meaning that it should accept a list of input values for each parameter. The lists should be of equal length (and be up to length `max_batch_size`). The function is then *required* to return a tuple of lists (even if there is only 1 output component), with each list in the tuple corresponding to one output component.
+            max_batch_size: maximum number of inputs to batch together if this is called from the queue (only relevant if batch=True)
+            preprocess: if False, will not run preprocessing of component data before running 'fn' (e.g. leaving it as a base64 string if this method is called with the `Image` component).
+            postprocess: if False, will not run postprocessing of component data before returning 'fn' output to the browser.
+            cancels: a list of other events to cancel when this listener is triggered. For example, setting cancels=[click_event] will cancel the click_event, where click_event is the return value of another components .click method. Functions that have not yet run (or generators that are iterating) will be cancelled, but functions that are currently running will be allowed to finish.
+            every: continously calls `value` to recalculate it if `value` is a function (has no effect otherwise). Can provide a Timer whose tick resets `value`, or a float that provides the regular interval for the reset Timer.
+            trigger_mode: if "once" (default for all events except `.change()`) would not allow any submissions while an event is pending. If set to "multiple", unlimited submissions are allowed while pending, and "always_last" (default for `.change()` and `.key_up()` events) would allow a second submission after the pending event is complete.
+            js: optional frontend js method to run before running 'fn'. Input arguments for js method are values of 'inputs' and 'outputs', return should be a list of values for output components.
+            concurrency_limit: if set, this is the maximum number of this event that can be running simultaneously. Can be set to None to mean no concurrency_limit (any number of this event can be running simultaneously). Set to "default" to use the default concurrency limit (defined by the `default_concurrency_limit` parameter in `Blocks.queue()`, which itself is 1 by default).
+            concurrency_id: if set, this is the id of the concurrency group. Events with the same concurrency_id will be limited by the lowest set concurrency_limit.
+            show_api: whether to show this event in the "view API" page of the Gradio app, or in the ".view_api()" method of the Gradio clients. Unlike setting api_name to False, setting show_api to False will still allow downstream apps as well as the Clients to use this event. If fn is None, show_api will automatically be set to False.
+            key: A unique key for this event listener to be used in @gr.render(). If set, this value identifies an event as identical across re-renders when the key is identical.
+            api_description: Description of the API endpoint. Can be a string, None, or False. If set to a string, the endpoint will be exposed in the API docs with the given description. If None, the function's docstring will be used as the API endpoint description. If False, then no description will be displayed in the API docs.
+        
+        """
+        ...  e   a   t   o   r   s   <   /   s   t   r   o   n   g   >       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   t   w   i   t   t   e   r   .   c   o   m   /   _   i   n   e   s   m   o   n   t   a   n   i   /   s   t   a   t   u   s   /   1   1   4   4   1   7   3   2   2   5   3   2   2   1   4   3   7   4   4   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   <   s   m   a   l   l   >   (   r   e   f   )   <   /   s   m   a   l   l   >   <   /   a   >       -       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   t   w   i   t   t   e   r   .   c   o   m   /   h   o   n   n   i   b   a   l   /   s   t   a   t   u   s   /   1   1   4   4   0   3   1   4   2   1   8   5   9   6   5   5   6   8   0   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   <   s   m   a   l   l   >   (   r   e   f   )   <   /   s   m   a   l   l   >   <   /   a   >   <   /   d   i   v   >   
+   
+   -   -   -   
+   
+   "   _   I   f       a   n   y   o   n   e       i   s       l   o   o   k   i   n   g       t   o       b   u   i   l   d       a       p   r   o   d   u   c   t   i   o   n       P   y   t   h   o   n       A   P   I   ,       I       w   o   u   l   d       h   i   g   h   l   y       r   e   c   o   m   m   e   n   d       *   *   F   a   s   t   A   P   I   *   *   .       I   t       i   s       *   *   b   e   a   u   t   i   f   u   l   l   y       d   e   s   i   g   n   e   d   *   *   ,       *   *   s   i   m   p   l   e       t   o       u   s   e   *   *       a   n   d       *   *   h   i   g   h   l   y       s   c   a   l   a   b   l   e   *   *   ,       i   t       h   a   s       b   e   c   o   m   e       a       *   *   k   e   y       c   o   m   p   o   n   e   n   t   *   *       i   n       o   u   r       A   P   I       f   i   r   s   t       d   e   v   e   l   o   p   m   e   n   t       s   t   r   a   t   e   g   y       a   n   d       i   s       d   r   i   v   i   n   g       m   a   n   y       a   u   t   o   m   a   t   i   o   n   s       a   n   d       s   e   r   v   i   c   e   s       s   u   c   h       a   s       o   u   r       V   i   r   t   u   a   l       T   A   C       E   n   g   i   n   e   e   r   .   _   "   
+   
+   <   d   i   v       s   t   y   l   e   =   "   t   e   x   t   -   a   l   i   g   n   :       r   i   g   h   t   ;       m   a   r   g   i   n   -   r   i   g   h   t   :       1   0   %   ;   "   >   D   e   o   n       P   i   l   l   s   b   u   r   y       -       <   s   t   r   o   n   g   >   C   i   s   c   o   <   /   s   t   r   o   n   g   >       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   w   w   w   .   l   i   n   k   e   d   i   n   .   c   o   m   /   p   o   s   t   s   /   d   e   o   n   p   i   l   l   s   b   u   r   y   _   c   i   s   c   o   -   c   x   -   p   y   t   h   o   n   -   a   c   t   i   v   i   t   y   -   6   9   6   3   2   4   2   6   2   8   5   3   6   4   8   7   9   3   6   -   t   r   A   p   /   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   <   s   m   a   l   l   >   (   r   e   f   )   <   /   s   m   a   l   l   >   <   /   a   >   <   /   d   i   v   >   
+   
+   -   -   -   
+   
+   #   #       *   *   T   y   p   e   r   *   *   ,       t   h   e       F   a   s   t   A   P   I       o   f       C   L   I   s   
+   
+   <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   t   y   p   e   r   .   t   i   a   n   g   o   l   o   .   c   o   m   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   <   i   m   g       s   r   c   =   "   h   t   t   p   s   :   /   /   t   y   p   e   r   .   t   i   a   n   g   o   l   o   .   c   o   m   /   i   m   g   /   l   o   g   o   -   m   a   r   g   i   n   /   l   o   g   o   -   m   a   r   g   i   n   -   v   e   c   t   o   r   .   s   v   g   "       s   t   y   l   e   =   "   w   i   d   t   h   :       2   0   %   ;   "   >   <   /   a   >   
+   
+   I   f       y   o   u       a   r   e       b   u   i   l   d   i   n   g       a       <   a   b   b   r       t   i   t   l   e   =   "   C   o   m   m   a   n   d       L   i   n   e       I   n   t   e   r   f   a   c   e   "   >   C   L   I   <   /   a   b   b   r   >       a   p   p       t   o       b   e       u   s   e   d       i   n       t   h   e       t   e   r   m   i   n   a   l       i   n   s   t   e   a   d       o   f       a       w   e   b       A   P   I   ,       c   h   e   c   k       o   u   t       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   t   y   p   e   r   .   t   i   a   n   g   o   l   o   .   c   o   m   /   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   *   *   T   y   p   e   r   *   *   <   /   a   >   .   
+   
+   *   *   T   y   p   e   r   *   *       i   s       F   a   s   t   A   P   I   '   s       l   i   t   t   l   e       s   i   b   l   i   n   g   .       A   n   d       i   t   '   s       i   n   t   e   n   d   e   d       t   o       b   e       t   h   e       *   *   F   a   s   t   A   P   I       o   f       C   L   I   s   *   *   .       (#  þ      €ö 
+   
+   #   #       R   e   q   u   i   r   e   m   e   n   t   s   
+   
+   F   a   s   t   A   P   I       s   t   a   n   d   s       o   n       t   h   e       s   h   o   u   l   d   e   r   s       o   f       g   i   a   n   t   s   :   
+   
+   *       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   w   w   w   .   s   t   a   r   l   e   t   t   e   .   i   o   /   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   S   t   a   r   l   e   t   t   e   <   /   a   >       f   o   r       t   h   e       w   e   b       p   a   r   t   s   .   
+   *       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   d   o   c   s   .   p   y   d   a   n   t   i   c   .   d   e   v   /   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   P   y   d   a   n   t   i   c   <   /   a   >       f   o   r       t   h   e       d   a   t   a       p   a   r   t   s   .   
+   
+   #   #       I   n   s   t   a   l   l   a   t   i   o   n   
+   
+   C   r   e   a   t   e       a   n   d       a   c   t   i   v   a   t   e       a       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   f   a   s   t   a   p   i   .   t   i   a   n   g   o   l   o   .   c   o   m   /   v   i   r   t   u   a   l   -   e   n   v   i   r   o   n   m   e   n   t   s   /   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   v   i   r   t   u   a   l       e   n   v   i   r   o   n   m   e   n   t   <   /   a   >       a   n   d       t   h   e   n       i   n   s   t   a   l   l       F   a   s   t   A   P   I   :   
+   
+   <   d   i   v       c   l   a   s   s   =   "   t   e   r   m   y   "   >   
+   
+   `   `   `   c   o   n   s   o   l   e   
+   $       p   i   p       i   n   s   t   a   l   l       "   f   a   s   t   a   p   i   [   s   t   a   n   d   a   r   d   ]   "   
+   
+   -   -   -   >       1   0   0   %   
+   `   `   `   
+   
+   <   /   d   i   v   >   
+   
+   *   *   N   o   t   e   *   *   :       M   a   k   e       s   u   r   e       y   o   u       p   u   t       `   "   f   a   s   t   a   p   i   [   s   t   a   n   d   a   r   d   ]   "   `       i   n       q   u   o   t   e   s       t   o       e   n   s   u   r   e       i   t       w   o   r   k   s       i   n       a   l   l       t   e   r   m   i   n   a   l   s   .   
+   
+   #   #       E   x   a   m   p   l   e   
+   
+   #   #   #       C   r   e   a   t   e       i   t   
+   
+   C   r   e   a   t   e       a       f   i   l   e       `   m   a   i   n   .   p   y   `       w   i   t   h   :   
+   
+   `   `   `   P   y   t   h   o   n   
+   f   r   o   m       t   y   p   i   n   g       i   m   p   o   r   t       U   n   i   o   n   
+   
+   f   r   o   m       f   a   s   t   a   p   i       i   m   p   o   r   t       F   a   s   t   A   P   I   
+   
+   a   p   p       =       F   a   s   t   A   P   I   (   )   
+   
+   
+   @   a   p   p   .   g   e   t   (   "   /   "   )   
+   d   e   f       r   e   a   d   _   r   o   o   t   (   )   :   
+                   r   e   t   u   r   n       {   "   H   e   l   l   o   "   :       "   W   o   r   l   d   "   }   
+   
+   
+   @   a   p   p   .   g   e   t   (   "   /   i   t   e   m   s   /   {   i   t   e   m   _   i   d   }   "   )   
+   d   e   f       r   e   a   d   _   i   t   e   m   (   i   t   e   m   _   i   d   :       i   n   t   ,       q   :       U   n   i   o   n   [   s   t   r   ,       N   o   n   e   ]       =       N   o   n   e   )   :   
+                   r   e   t   u   r   n       {   "   i   t   e   m   _   i   d   "   :       i   t   e   m   _   i   d   ,       "   q   "   :       q   }   
+   `   `   `   
+   
+   <   d   e   t   a   i   l   s       m   a   r   k   d   o   w   n   =   "   1   "   >   
+   <   s   u   m   m   a   r   y   >   O   r       u   s   e       <   c   o   d   e   >   a   s   y   n   c       d   e   f   <   /   c   o   d   e   >   .   .   .   <   /   s   u   m   m   a   r   y   >   
+   
+   I   f       y   o   u   r       c   o   d   e       u   s   e   s       `   a   s   y   n   c   `       /       `   a   w   a   i   t   `   ,       u   s   e       `   a   s   y   n   c       d   e   f   `   :   
+   
+   `   `   `   P   y   t   h   o   n       h   l   _   l   i   n   e   s   =   "   9           1   4   "   
+   f   r   o   m       t   y   p   i   n   g       i   m   p   o   r   t       U   n   i   o   n   
+   
+   f   r   o   m       f   a   s   t   a   p   i       i   m   p   o   r   t       F   a   s   t   A   P   I   
+   
+   a   p   p       =       F   a   s   t   A   P   I   (   )   
+   
+   
+   @   a   p   p   .   g   e   t   (   "   /   "   )   
+   a   s   y   n   c       d   e   f       r   e   a   d   _   r   o   o   t   (   )   :   
+                   r   e   t   u   r   n       {   "   H   e   l   l   o   "   :       "   W   o   r   l   d   "   }   
+   
+   
+   @   a   p   p   .   g   e   t   (   "   /   i   t   e   m   s   /   {   i   t   e   m   _   i   d   }   "   )   
+   a   s   y   n   c       d   e   f       r   e   a   d   _   i   t   e   m   (   i   t   e   m   _   i   d   :       i   n   t   ,       q   :       U   n   i   o   n   [   s   t   r   ,       N   o   n   e   ]       =       N   o   n   e   )   :   
+                   r   e   t   u   r   n       {   "   i   t   e   m   _   i   d   "   :       i   t   e   m   _   i   d   ,       "   q   "   :       q   }   
+   `   `   `   
+   
+   *   *   N   o   t   e   *   *   :   
+   
+   I   f       y   o   u       d   o   n   '   t       k   n   o   w   ,       c   h   e   c   k       t   h   e       _   "   I   n       a       h   u   r   r   y   ?   "   _       s   e   c   t   i   o   n       a   b   o   u   t       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   f   a   s   t   a   p   i   .   t   i   a   n   g   o   l   o   .   c   o   m   /   a   s   y   n   c   /   #   i   n   -   a   -   h   u   r   r   y   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   `   a   s   y   n   c   `       a   n   d       `   a   w   a   i   t   `       i   n       t   h   e       d   o   c   s   <   /   a   >   .   
+   
+   <   /   d   e   t   a   i   l   s   >   
+   
+   #   #   #       R   u   n       i   t   
+   
+   R   u   n       t   h   e       s   e   r   v   e   r       w   i   t   h   :   
+   
+   <   d   i   v       c   l   a   s   s   =   "   t   e   r   m   y   "   >   
+   
+   `   `   `   c   o   n   s   o   l   e   
+   $       f   a   s   t   a   p   i       d   e   v       m   a   i   n   .   p   y   
+   
+       m%   %   %   %   %   %   %   %   %   %   %      F   a   s   t   A   P   I       C   L   I       -       D   e   v   e   l   o   p   m   e   n   t       m   o   d   e        %   %   %   %   %   %   %   %   %   %   %  n%  
+       %                                                                                                                                                                                                                      %  
+       %          S   e   r   v   i   n   g       a   t   :       h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0                                                                           %  
+       %                                                                                                                                                                                                                      %  
+       %          A   P   I       d   o   c   s   :       h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0   /   d   o   c   s                                                               %  
+       %                                                                                                                                                                                                                      %  
+       %          R   u   n   n   i   n   g       i   n       d   e   v   e   l   o   p   m   e   n   t       m   o   d   e   ,       f   o   r       p   r   o   d   u   c   t   i   o   n       u   s   e   :               %  
+       %                                                                                                                                                                                                                      %  
+       %          f   a   s   t   a   p   i       r   u   n                                                                                                                                                                   %  
+       %                                                                                                                                                                                                                      %  
+       p%   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %   %  o%  
+   
+   I   N   F   O   :                       W   i   l   l       w   a   t   c   h       f   o   r       c   h   a   n   g   e   s       i   n       t   h   e   s   e       d   i   r   e   c   t   o   r   i   e   s   :       [   '   /   h   o   m   e   /   u   s   e   r   /   c   o   d   e   /   a   w   e   s   o   m   e   a   p   p   '   ]   
+   I   N   F   O   :                       U   v   i   c   o   r   n       r   u   n   n   i   n   g       o   n       h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0       (   P   r   e   s   s       C   T   R   L   +   C       t   o       q   u   i   t   )   
+   I   N   F   O   :                       S   t   a   r   t   e   d       r   e   l   o   a   d   e   r       p   r   o   c   e   s   s       [   2   2   4   8   7   5   5   ]       u   s   i   n   g       W   a   t   c   h   F   i   l   e   s   
+   I   N   F   O   :                       S   t   a   r   t   e   d       s   e   r   v   e   r       p   r   o   c   e   s   s       [   2   2   4   8   7   5   7   ]   
+   I   N   F   O   :                       W   a   i   t   i   n   g       f   o   r       a   p   p   l   i   c   a   t   i   o   n       s   t   a   r   t   u   p   .   
+   I   N   F   O   :                       A   p   p   l   i   c   a   t   i   o   n       s   t   a   r   t   u   p       c   o   m   p   l   e   t   e   .   
+   `   `   `   
+   
+   <   /   d   i   v   >   
+   
+   <   d   e   t   a   i   l   s       m   a   r   k   d   o   w   n   =   "   1   "   >   
+   <   s   u   m   m   a   r   y   >   A   b   o   u   t       t   h   e       c   o   m   m   a   n   d       <   c   o   d   e   >   f   a   s   t   a   p   i       d   e   v       m   a   i   n   .   p   y   <   /   c   o   d   e   >   .   .   .   <   /   s   u   m   m   a   r   y   >   
+   
+   T   h   e       c   o   m   m   a   n   d       `   f   a   s   t   a   p   i       d   e   v   `       r   e   a   d   s       y   o   u   r       `   m   a   i   n   .   p   y   `       f   i   l   e   ,       d   e   t   e   c   t   s       t   h   e       *   *   F   a   s   t   A   P   I   *   *       a   p   p       i   n       i   t   ,       a   n   d       s   t   a   r   t   s       a       s   e   r   v   e   r       u   s   i   n   g       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   w   w   w   .   u   v   i   c   o   r   n   .   o   r   g   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   U   v   i   c   o   r   n   <   /   a   >   .   
+   
+   B   y       d   e   f   a   u   l   t   ,       `   f   a   s   t   a   p   i       d   e   v   `       w   i   l   l       s   t   a   r   t       w   i   t   h       a   u   t   o   -   r   e   l   o   a   d       e   n   a   b   l   e   d       f   o   r       l   o   c   a   l       d   e   v   e   l   o   p   m   e   n   t   .   
+   
+   Y   o   u       c   a   n       r   e   a   d       m   o   r   e       a   b   o   u   t       i   t       i   n       t   h   e       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   f   a   s   t   a   p   i   .   t   i   a   n   g   o   l   o   .   c   o   m   /   f   a   s   t   a   p   i   -   c   l   i   /   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   F   a   s   t   A   P   I       C   L   I       d   o   c   s   <   /   a   >   .   
+   
+   <   /   d   e   t   a   i   l   s   >   
+   
+   #   #   #       C   h   e   c   k       i   t   
+   
+   O   p   e   n       y   o   u   r       b   r   o   w   s   e   r       a   t       <   a       h   r   e   f   =   "   h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0   /   i   t   e   m   s   /   5   ?   q   =   s   o   m   e   q   u   e   r   y   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0   /   i   t   e   m   s   /   5   ?   q   =   s   o   m   e   q   u   e   r   y   <   /   a   >   .   
+   
+   Y   o   u       w   i   l   l       s   e   e       t   h   e       J   S   O   N       r   e   s   p   o   n   s   e       a   s   :   
+   
+   `   `   `   J   S   O   N   
+   {   "   i   t   e   m   _   i   d   "   :       5   ,       "   q   "   :       "   s   o   m   e   q   u   e   r   y   "   }   
+   `   `   `   
+   
+   Y   o   u       a   l   r   e   a   d   y       c   r   e   a   t   e   d       a   n       A   P   I       t   h   a   t   :   
+   
+   *       R   e   c   e   i   v   e   s       H   T   T   P       r   e   q   u   e   s   t   s       i   n       t   h   e       _   p   a   t   h   s   _       `   /   `       a   n   d       `   /   i   t   e   m   s   /   {   i   t   e   m   _   i   d   }   `   .   
+   *       B   o   t   h       _   p   a   t   h   s   _       t   a   k   e       `   G   E   T   `       <   e   m   >   o   p   e   r   a   t   i   o   n   s   <   /   e   m   >       (   a   l   s   o       k   n   o   w   n       a   s       H   T   T   P       _   m   e   t   h   o   d   s   _   )   .   
+   *       T   h   e       _   p   a   t   h   _       `   /   i   t   e   m   s   /   {   i   t   e   m   _   i   d   }   `       h   a   s       a       _   p   a   t   h       p   a   r   a   m   e   t   e   r   _       `   i   t   e   m   _   i   d   `       t   h   a   t       s   h   o   u   l   d       b   e       a   n       `   i   n   t   `   .   
+   *       T   h   e       _   p   a   t   h   _       `   /   i   t   e   m   s   /   {   i   t   e   m   _   i   d   }   `       h   a   s       a   n       o   p   t   i   o   n   a   l       `   s   t   r   `       _   q   u   e   r   y       p   a   r   a   m   e   t   e   r   _       `   q   `   .   
+   
+   #   #   #       I   n   t   e   r   a   c   t   i   v   e       A   P   I       d   o   c   s   
+   
+   N   o   w       g   o       t   o       <   a       h   r   e   f   =   "   h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0   /   d   o   c   s   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   h   t   t   p   :   /   /   1   2   7   .   0   .   0   .   1   :   8   0   0   0   /   d   o   c   s   <   /   a   >   .   
+   
+   Y   o   u       w   i   l   l       s   e   e       t   h   e       a   u   t   o   m   a   t   i   c       i   n   t   e   r   a   c   t   i   v   e       A   P   I       d   o   c   u   m   e   n   t   a   t   i   o   n       (   p   r   o   v   i   d   e   d       b   y       <   a       h   r   e   f   =   "   h   t   t   p   s   :   /   /   g   i   t   h   u   b   .   c   o   m   /   s   w   a   g   g   e   r   -   a   p   i   /   s   w   a   g   g   e   r   -   u   i   "       c   l   a   s   s   =   "   e   x   t   e   r   n   a   l   -   l   i   n   k   "       t   a   r   g   e   t   =   "   _   b   l   a   n   k   "   >   S   w   a   g   g   e   r       U   I   <   /   a   >   )   :   
+   
+   !   [   S   w   a   g   g   e   r       U   I   ]   (   h   t   t   p   s   :   /   /   f   a   s   t   a   p   i   .   t   i   a   n   g   o   l   o   .   c   o   m   /   i   m   g   /   i   n   d   e   x   /   i   n   d   e   x   
