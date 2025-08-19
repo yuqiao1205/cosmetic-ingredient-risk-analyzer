@@ -12,8 +12,8 @@ RISK_DB = {
         "impact": "May cause bioaccumulation; linked to environmental concerns"
     },
     "dimethicone": {
-        "risk": "Low",
-        "impact": "Generally safe; can cause buildup and irritation in sensitive skin"
+        "risk": "Medium",
+        "impact": "Silicone; generally safe, may cause skin buildup"
     },
     "peg-10 dimethicone": {
         "risk": "Medium",
@@ -25,7 +25,7 @@ RISK_DB = {
     },
     "phenoxyethanol": {
         "risk": "Medium",
-        "impact": "Preservative; can cause skin irritation, allergic reactions, toxic at high doses"
+        "impact": "Preservative; may cause irritation at high concentrations"
     },
     "fragrance": {
         "risk": "Medium",
@@ -37,10 +37,10 @@ RISK_DB = {
     },
     "ethylhexyl salicylate": {
         "risk": "Medium",
-        "impact": "UV filter; can cause irritation, endocrine effects in some studies"
+        "impact": "UV filter; may cause mild irritation in some cases"
     },
     "butylene glycol": {
-        "risk": "Low",
+        "risk": "Medium",
         "impact": "Humectant; generally safe, may cause mild irritation"
     },
     "glycerin": {
@@ -85,11 +85,11 @@ RISK_DB = {
     },
     "petrolatum": {
         "risk": "Medium",
-        "impact": "Generally safe if refined; contamination risk with PAHs"
+        "impact": "Occlusive agent; safe if refined"
     },
     "talc": {
         "risk": "Medium",
-        "impact": "Contamination risk with asbestos; possible carcinogen"
+        "impact": "Mineral; inhalation risk in powders"
     },
     "silica": {
         "risk": "Medium",
@@ -116,12 +116,12 @@ RISK_DB = {
         "impact": "Form of Vitamin A; potential carcinogen when exposed to sunlight"
     },
     "homosalate": {
-        "risk": "High",
-        "impact": "UV filter; possible hormone disruption"
+        "risk": "Medium",
+        "impact": "UV filter; generally safe at cosmetic concentrations"
     },
     "octocrylene": {
-        "risk": "Medium",
-        "impact": "UV filter; linked to allergies and photoallergic reactions"
+        "risk": "High",
+        "impact": "UV filter; may cause allergies and photoallergic reactions"
     },
     "ascorbyl tetraisopalmitate": {
         "risk": "Low",
@@ -426,5 +426,198 @@ RISK_DB = {
     "ethylhexylglycerin": {
         "risk": "Low",
         "impact": "Ethylhexylglycerin primarily functions as a preservative booster & skin-conditioning agent, enhancing product stability & hydration."
-    }
+    },
+    "benzophenone-3": {
+        "risk": "High",
+        "impact": "UV filter; potential hormone disruptor, may cause skin irritation"
+    },
+    "butylparaben": {
+        "risk": "High",
+        "impact": "Preservative; linked to hormone disruption"
+    },
+    "butylphenyl methylpropional": {
+        "risk": "High",
+        "impact": "Fragrance allergen; may cause irritation or sensitization"
+    },
+    "cyclomethicone (d4)": {
+        "risk": "High",
+        "impact": "Silicone; environmental concerns, may bioaccumulate"
+    },
+    "c9-15 fluoroalcohol phosphate": {
+        "risk": "High",
+        "impact": "Synthetic chemical; possible toxicity and environmental impact"
+    },
+    "hydroxyisohexyl 3-cyclohexene carboxaldehyde": {
+        "risk": "High",
+        "impact": "Fragrance allergen; may trigger allergic reactions"
+    },
+    "isobutylparaben": {
+        "risk": "High",
+        "impact": "Preservative; potential hormone disruption"
+    },
+    "iron oxide [nano]": {
+        "risk": "High",
+        "impact": "Nanoparticle pigment; inhalation risk, may cause toxicity in high doses"
+    },
+    "methylchloroisothiazolinone": {
+        "risk": "High",
+        "impact": "Preservative; can cause skin irritation and allergic reactions"
+    },
+    "octinoxate": {
+        "risk": "High",
+        "impact": "UV filter; hormone disruption, may irritate skin"
+    },
+    "propylparaben": {
+        "risk": "High",
+        "impact": "Preservative; linked to hormone disruption"
+    },
+    "trifluoropropyldimethyl": {
+        "risk": "High",
+        "impact": "Synthetic chemical; potential environmental and health risk"
+    },
+    "trimethylsiloxysilicate": {
+        "risk": "High",
+        "impact": "Film-forming silicone; may cause skin buildup or irritation"
+    },
+    "zinc pyrithione": {
+        "risk": "High",
+        "impact": "Antimicrobial; can cause skin irritation or sensitization"
+    },
+    "aluminum starch octenylsuccinate": {
+        "risk": "Medium",
+        "impact": "Absorbent and thickener in cosmetics; generally safe, but long-term exposure to aluminum salts may cause neurotoxicity, kidney burden, and mild skin irritation in sensitive individuals"
+    },
+    "benzyl salicylate": {
+        "risk": "Medium",
+        "impact": "Fragrance ingredient; potential allergen"
+    },
+    "butyloctyl salicylate": {
+        "risk": "Medium",
+        "impact": "Emollient and UV filter; generally safe"
+    },
+    "c13-14 isoparaffin": {
+        "risk": "Medium",
+        "impact": "Emollient; generally safe"
+    },
+    "cyclopentasiloxane (d5)": {
+        "risk": "Medium",
+        "impact": "Silicone; may bioaccumulate in the environment"
+    },
+    "cyclohexasiloxane (d6)": {
+        "risk": "Medium",
+        "impact": "Silicone; may bioaccumulate in the environment"
+    },
+    "ceresin": {
+        "risk": "Medium",
+        "impact": "Mineral wax; may cause mild irritation"
+    },
+    "isoeugenol": {
+        "risk": "Medium",
+        "impact": "Fragrance component; may cause mild irritation or sensitization"
+    },
+    "methylparaben": {
+        "risk": "Medium",
+        "impact": "Preservative; generally safe in small concentrations"
+    },
+    "paraffinum liquidum": {
+        "risk": "Medium",
+        "impact": "Mineral oil; generally safe if refined"
+    },
+    "polyethylene": {
+        "risk": "Medium",
+        "impact": "Used in exfoliants; generally safe, environmental concerns"
+    },
+    "synthetic wax": {
+        "risk": "Medium",
+        "impact": "Emollient; generally safe"
+    },
+    "ozokerite": {
+        "risk": "Medium",
+        "impact": "Mineral wax; may cause mild irritation"
+    },
+    "coco-glucoside": {
+        "risk": "Low",
+        "impact": "Coco-Glucoside is a gentle surfactant primarily used for cleansing and emulsifying in cosmetic formulations."
+    },
+    "butylenie glycol": {
+        "risk": "Low",
+        "impact": "Butyl\u00e8ne glycol is a solvent and humectant, primarily used to enhance the delivery of other ingredients and hydrate skin."
+    },
+    "1": {
+        "risk": "Low",
+        "impact": "**1. Hyaluronic Acid:** Primarily hydrates and attracts moisture, plumping skin for a smoother appearance. Generally safe for all skin types."
+    },
+    "2-hexanediol": {
+        "risk": "Low",
+        "impact": "2-Hexanediol acts as a solvent and humectant, helping to dissolve other ingredients and retain moisture in cosmetics."
+    },
+    "polyglycery-10 laurate": {
+        "risk": "Low",
+        "impact": "Polyglyceryl-10 Laurate: Primarily an emulsifier & opacifier, improving texture and stability in cosmetic formulations. Generally safe."
+    },
+    "centaurea cyanus flower water": {
+        "risk": "Low",
+        "impact": "Centaurea cyanus flower water soothes, hydrates, and tones skin, offering a gentle, calming effect."
+    },
+    "helianthus annus  seed oil": {
+        "risk": "Low",
+        "impact": "Helianthus annus seed oil primarily moisturizes and softens skin, offering a safe and nourishing emollient."
+    },
+    "borago:": {
+        "risk": "Low",
+        "impact": "**Borago (specifically Borago officinalis extract) primarily soothes and protects skin, offering antioxidant and anti-inflammatory benefits.**"
+    },
+    "officinalis seed oil": {
+        "risk": "Low",
+        "impact": "Officinalis Seed Oil primarily hydrates and nourishes skin, offering emollient benefits with a generally safe profile."
+    },
+    "hydrolyzed soy protein": {
+        "risk": "Low",
+        "impact": "Hydrolyzed soy protein improves skin hydration and elasticity by binding moisture, generally considered safe for topical use."
+    },
+    "rosa darnascena extract": {
+        "risk": "Low",
+        "impact": "Rosa Darnascena Extract: Primarily brightens skin and reduces redness, offering antioxidant and soothing benefits. Generally safe for use."
+    },
+    "rosa damasoena flower water": {
+        "risk": "Low",
+        "impact": "Rosa Damascena flower water soothes, hydrates, and gently tones skin, offering a calming and refreshing effect."
+    },
+    "aloe barbadensis leaf juice": {
+        "risk": "Low",
+        "impact": "Aloe Barbadensis Leaf Juice primarily hydrates and soothes skin, offering a cooling and moisturizing effect. Generally considered very safe."
+    },
+    "panax ginseng root extract": {
+        "risk": "Low",
+        "impact": "Panax Ginseng Root Extract: Primarily boosts skin radiance & combats signs of aging by stimulating collagen production, generally safe."
+    },
+    "malva syivestris  flower extract": {
+        "risk": "Low",
+        "impact": "Malva sylvestris flower extract primarily soothes, hydrates, and reduces redness in cosmetic formulations, generally considered safe."
+    },
+    "rosa damascena flower oil": {
+        "risk": "Low",
+        "impact": "Rosa Damascena Flower Oil primarily soothes, hydrates, and reduces redness in skincare formulations, generally considered safe for use."
+    },
+    "caprylic/caprie triglyceride": {
+        "risk": "Low",
+        "impact": "Caprylic/Capric Triglyceride is a lightweight emollient that softens and smooths skin by improving barrier function. Generally safe."
+    },
+    "capryfyl glycol": {
+        "risk": "Low",
+        "impact": "Capryfyl Glycol is a humectant, drawing moisture into the skin for hydration and improving product texture. Generally safe."
+    },
+    "hydrolyzed jojoba esters": {
+        "risk": "Low",
+        "impact": "Hydrolyzed Jojoba Esters: Primarily a skin-softening emollient, providing a smooth, non-greasy feel and improving texture."
+    },
+    "citic acid": {
+        "risk": "Low",
+        "impact": "Citric acid in cosmetics primarily acts as a pH adjuster and gentle exfoliant for smoother skin."
+    },
+    "potassium sorate <16057> disclaimer: fresh product ingredient listings are updated periodically.": {
+        "risk": "Low",
+        "impact": "Potassium sorate ( <16057>) primarily functions as a preservative in cosmetics, inhibiting microbial growth. Generally safe for use."
+    },
+
 }
