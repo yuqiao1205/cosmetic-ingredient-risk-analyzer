@@ -1,3 +1,4 @@
+
 # 🧴 Ingredient Risk Analyzer
 
 The **Ingredient Risk Analyzer** helps consumers and researchers evaluate the safety of cosmetic and skincare products by analyzing ingredient lists.  
@@ -24,24 +25,28 @@ It supports both **image uploads** (OCR extraction) and **product URLs**, and pr
 ```bash
 git clone https://github.com/yourusername/cosmetic-ingredient-risk-analyzer.git
 cd ingredient-risk-analyzer
+```
 
 ### 2. Create Virtual Environment
+```bash
 python -m venv venv
 source venv/bin/activate   # On Mac/Linux
 venv\Scripts\activate      # On Windows
+```
 
 ### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
-
+```
 
 ### 4. Run the app
-python3 url.py
+```bash
+python3 app.py
+```
 
+---
 
-🛠 Example Use Cases
-Upload a photo of Clinique foundation → Extracts and rates all ingredients.
-
-Paste a Sephora product URL → Scrapes and analyzes the listed ingredients.
-
-Get a breakdown of risks (e.g., parabens flagged as medium risk, talc flagged as high risk).
-
+## 🧪 Example Use Cases
+- Upload a photo of Clinique foundation → Extracts and rates all ingredients.
+- Paste a Sephora product URL → Scrapes and analyzes the listed ingredients.
+- Get a breakdown of risks (e.g., parabens flagged as medium risk, talc flagged as high risk).
