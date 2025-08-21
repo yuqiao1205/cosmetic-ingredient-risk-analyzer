@@ -1,4 +1,5 @@
-# 🧴 Cosmetic Ingredient Risk Analyzer
+# 🧴Agentic AI Cosmetic Ingredient Risk Analyzer
+A proactive AI assistant that evaluates cosmetic and skincare products, providing detailed ingredient risk analysis, product safety scoring, and actionable insights.
 
 The **Ingredient Risk Analyzer** allows users to evaluate cosmetic and skincare products using multiple input methods, including **image uploads**, **product URLs**, or **manual pasted ingredient lists**. It extracts ingredients using OCR (via Tesseract) and analyzes each one with a local knowledge base powered by **LlamaIndex, ChromaDB, and Ollama LLM**. For each ingredient, it provides a **risk score** (High, Medium, Low), explains the potential **impact** (e.g., irritation, toxicity, endocrine disruption), and provides an **overall product score** (Excellent, Poor, or Bad), giving users a clear and concise safety assessment. All processing is performed locally, ensuring privacy and fast performance without relying on external APIs.
 
