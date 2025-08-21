@@ -22,7 +22,7 @@ It supports both **image uploads** (OCR extraction) and **product URLs**, and pr
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/ingredient-risk-analyzer.git
+git clone https://github.com/yourusername/cosmetic-ingredient-risk-analyzer.git
 cd ingredient-risk-analyzer
 
 ### 2. Create Virtual Environment

@@ -33,5 +33,3 @@ LLM Integration: LlamaIndex + Ollama (local models)
 
 Vector Database: ChromaDB
 
-Frontend: Simple drag-and-drop UI (Flask / React optional)
-
