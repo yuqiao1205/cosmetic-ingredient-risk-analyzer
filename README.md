@@ -102,6 +102,12 @@ brew install tesseract
 
 2. Before running the application, you must first run the local LLM (gemma3:4b) or component extraction and analysis will not be possible.
 
---- 
+3. If you want to use a different local LLM, modify the following line code in Config & Setup area:
+
+```python
+llm = Ollama(model="gemma3:4b", request_timeout=120.0)
+```
+Replace "gemma3:4b" with the name of your desired local model.
+---
 ## 📸 Screenshots for the output
 <img src="images/example.png" alt="app interface" width="600"/>

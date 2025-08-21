@@ -34,7 +34,7 @@ from riskdata import RISK_DB
 # =========================
 # Config & Setup
 # =========================
-llm = Ollama(model="gemma3:4b", request_timeout=120.0)
+llm = Ollama(model="gemma3:4b", request_timeout=120.0) # use your local LLM here if you want to download a different local LLM
 Settings.llm = llm
 embed_model = OllamaEmbedding(model_name="nomic-embed-text")
 Settings.embed_model = embed_model

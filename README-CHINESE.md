@@ -97,5 +97,12 @@ http://localhost:7860
 ```bash
 brew install tesseract
 ```
+
+如果你想使用不同的本地 LLM，请在 Config & Setup 区域修改以下代码行
+```python
+llm = Ollama(model="gemma3:4b", request_timeout=120.0)
+```
+修改"gemma3:4b"，使用你希望的模型名字.
+---
 ## 📸 输出截图
 <img src="images/example.png" alt="app interface" width="600"/>
