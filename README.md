@@ -1,7 +1,6 @@
 # 🧴 Cosmetic Ingredient Risk Analyzer
 
-The Cosmetic Ingredient Risk Analyzer helps consumers and researchers evaluate the safety of cosmetic and skincare products by analyzing ingredient lists.  
-It supports **image uploads**, **product URLs**, and **manual pasted ingredient lists**, and provides a detailed risk breakdown of each ingredient using a local knowledge base (**LlamaIndex + ChromaDB + Ollama LLM**).
+The **Ingredient Risk Analyzer** allows users to evaluate cosmetic and skincare products using multiple input methods, including **image uploads**, **product URLs**, or **manual pasted ingredient lists**. It extracts ingredients using OCR (via Tesseract) and analyzes each one with a local knowledge base powered by **LlamaIndex, ChromaDB, and Ollama LLM**. For each ingredient, it provides a **risk score** (High, Medium, Low), explains the potential **impact** (e.g., irritation, toxicity, endocrine disruption), and provides an **overall product score** (Excellent, Poor, or Bad), giving users a clear and concise safety assessment. All processing is performed locally, ensuring privacy and fast performance without relying on external APIs.
 
 ---
 
