@@ -93,9 +93,10 @@ python3 app.py
 ✅ Now your **Ingredient Risk Analyzer** runs fully offline with local OCR, LlamaIndex, ChromaDB, and Ollama-powered LLM.
 
 ## 📌 Note
-1. Please make sure that Tesseract is correctly installed on your system. You can check by running tesseract --version in the terminal. If it’s not installed, use:
-
+1. Please make sure that Tesseract is correctly installed on your system. You can check by running tesseract --version in the terminal. If it’s not installed, use below command:
+```bash
 brew install tesseract
+```
 
 2. Before running the application, you must first run the local LLM (gemma3:4b) or component extraction and analysis will not be possible.
 
