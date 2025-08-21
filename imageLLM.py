@@ -28,7 +28,7 @@ from riskdata import RISK_DB  # our JSON-style dataset
 # Config & Setup
 # =========================
 
-# Configure local LLM (Gemma 2:4b)
+# Configure local LLM (Gemma 3:4b)
 llm = Ollama(model="gemma3:4b", request_timeout=120.0)
 Settings.llm = llm
 
@@ -54,7 +54,7 @@ def ocr_from_image(image_path: str) -> str:
         # Convert PIL image to a format for OpenCV to potentially improve OCR results
         # A simple preprocessing step might be to convert to grayscale and apply thresholding
         np_image = np.array(image)
-        if len(np_image.shape) > 2:
+        if len(np_image.shape) > 2: #如果图像是彩色的 (shape > 2)，就转成灰度图 gray。
             gray = cv2.cvtColor(np_image, cv2.COLOR_BGR2GRAY)
         else:
             gray = np_image
@@ -66,6 +66,7 @@ def ocr_from_image(image_path: str) -> str:
         # Use pytesseract to extract text from the processed image
         # 'eng' for English language, add 'cos' if a cosmetic-specific model is available
         # You may need to install language packs for pytesseract
+        #也可以换，比如中文 "chi_sim"
         text = pytesseract.image_to_string(thresh, lang='eng')
         
         return text

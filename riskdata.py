@@ -619,5 +619,32 @@ RISK_DB = {
         "risk": "Low",
         "impact": "Potassium sorate ( <16057>) primarily functions as a preservative in cosmetics, inhibiting microbial growth. Generally safe for use."
     },
-
+    "borago officinalis seed oil": {
+        "risk": "Low",
+        "impact": "Borago Officinalis Seed Oil: Primarily a soothing emollient, offering antioxidant benefits for skin hydration and protection."
+    },
+    "polyglyceryl-10 laurate": {
+        "risk": "Low",
+        "impact": "Polyglyceryl-10 Laurate: Primarily a mild emulsifier and skin-conditioning agent, improving texture and providing emollience."
+    },
+    "rosa damascena extract": {
+        "risk": "Low",
+        "impact": "Rosa Damascena Extract: Primarily a calming and anti-inflammatory agent, soothing skin and reducing redness in cosmetics."
+    },
+    "rosa damascena flower water": {
+        "risk": "Low",
+        "impact": "Rosa Damascena Flower Water primarily soothes, hydrates, and tones skin, offering a gentle, safe moisturizing effect."
+    },
+    "malva sylvestris  flower extract": {
+        "risk": "Low",
+        "impact": "Malva Sylvestris Flower Extract: Primarily soothes, hydrates, and provides antioxidant benefits for skin calming and protecting."
+    },
+    "butyseed oil": {
+        "risk": "Low",
+        "impact": "Butyrospermum Parkii (shea butter) oil deeply moisturizes and softens skin, providing a protective barrier. Generally safe for all skin types."
+    },
+    "damascena flower oil": {
+        "risk": "Low",
+        "impact": "Damascena flower oil primarily hydrates and softens skin, offering antioxidant benefits for a youthful appearance."
+    }
 }

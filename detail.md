@@ -1,7 +1,37 @@
-User pastes in a makeup product’s ingredients list (like Clinique foundation).
-• System scores the product (e.g. Excellent / Poor / Bad).
-• Shows which ingredients are high risk, medium risk, and explains the impact.
-• Uses LlamaIndex + Chroma (local) with a small knowledge base (like EWG or Open Beauty Facts).
- Using the LLM to extract the ingredients after OCR will make the process much more robust and less susceptible to the noise and non-ingredient text often found on product labels.
+Ingredient Risk Analyzer is a local Python application that helps users evaluate cosmetic and skincare products.
+It allows users to upload an image (e.g., product packaging) or input a URL to analyze the ingredients list.
+Using OCR + a local LLM (via LlamaIndex + ChromaDB), the system extracts cosmetic ingredients, checks them against a small knowledge base (e.g., EWG, Open Beauty Facts), and provides:
 
-I’ll give you a working skeleton you can run locally with Python:
+✅ A product score (Excellent / Medium / Poor)
+
+⚠️ A breakdown of high-risk and medium-risk ingredients
+
+📖 Explanations of each ingredient’s potential health impact
+
+This approach makes the analysis robust against noisy product labels and marketing text.
+
+Features
+📷 Image Upload: Drag & drop a product photo to extract ingredients via OCR.
+
+🌐 URL Input: Enter a product page URL to fetch and analyze the ingredient list.
+
+🧠 Ingredient Extraction: Local LLM ensures clean parsing of ingredient names.
+
+📊 Risk Analysis: Highlights high- and medium-risk ingredients with explanations.
+
+🏷 Product Scoring: Rates the overall safety of the product.
+
+💾 Local Knowledge Base: Uses ChromaDB + curated datasets (EWG, Open Beauty Facts).
+
+Tech Stack
+Backend: Python 
+Frontend: Gradio
+
+OCR: Tesseract (via pytesseract)
+
+LLM Integration: LlamaIndex + Ollama (local models)
+
+Vector Database: ChromaDB
+
+Frontend: Simple drag-and-drop UI (Flask / React optional)
+
