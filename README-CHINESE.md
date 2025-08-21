@@ -95,3 +95,5 @@ http://localhost:7860
 ```bash
 brew install tesseract
 ```
+## 📸 输出截图
+<img src="images/example.png" alt="app interface" width="600"/>

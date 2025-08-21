@@ -516,7 +516,7 @@ with gr.Blocks(title="Cosmetic Ingredient Safety – Local RAG") as demo:
         with gr.Column(scale=1):
             url_input = gr.Textbox(
                 label="Product Page URL",
-                placeholder="e.g., https://www.fresh.com/us/skincare/categories/cleansers/soy-face-cleanser-H00006238.html",
+                placeholder="e.g., https://www.aaa.com/us/skincare/categories/cleansers/soy-face-cleanser.html",
                 lines=3
             )
             analyze_url_btn = gr.Button("Analyze URL")

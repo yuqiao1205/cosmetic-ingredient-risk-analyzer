@@ -101,4 +101,6 @@ brew install tesseract
 
 2. Before running the application, you must first run the local LLM (gemma3:4b) or component extraction and analysis will not be possible.
 
-<img src="images/screenshot.png" alt="app interface" width="600"/>
+--- 
+## 📸 Screenshots for the output
+<img src="images/example.png" alt="app interface" width="600"/>

@@ -635,7 +635,7 @@ RISK_DB = {
         "risk": "Low",
         "impact": "Rosa Damascena Flower Water primarily soothes, hydrates, and tones skin, offering a gentle, safe moisturizing effect."
     },
-    "malva sylvestris  flower extract": {
+    "malva sylvestris flower extract": {
         "risk": "Low",
         "impact": "Malva Sylvestris Flower Extract: Primarily soothes, hydrates, and provides antioxidant benefits for skin calming and protecting."
     },
@@ -647,8 +647,6 @@ RISK_DB = {
         "risk": "Low",
         "impact": "Damascena flower oil primarily hydrates and softens skin, offering antioxidant benefits for a youthful appearance."
     },
-    "p": {
-        "risk": "Low",
-        "impact": "**PABA (Para-Aminobenzoic Acid)** primarily acts as a sunscreen filter, absorbing UVB rays. Generally safe in low concentrations."
-    }
+
+ 
 }
