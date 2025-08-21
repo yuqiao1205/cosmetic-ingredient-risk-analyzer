@@ -98,7 +98,7 @@ python3 app.py
 1. Please make sure that Tesseract is correctly installed on your system. You can check by running
 
 ```bash
- tesseract --version
+tesseract --version
  ```
 in the terminal. If it’s not installed, use below command:
 
