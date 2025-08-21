@@ -15,7 +15,9 @@ The **Ingredient Risk Analyzer** allows users to evaluate cosmetic and skincare 
   - **Medium Risk** (e.g., aluminum salts, PEGs)
   - **Low Risk / Safe** (commonly used ingredients)
 - 📝 **Explanations**: Each ingredient includes **risk level** + **impact** (e.g., irritation, toxicity, bioaccumulation).
+- 🔄 **Automatic Database Update**: If a new ingredient is not found in the database, the system automatically retrieves its information and updates the local database, making future analyses faster and more efficient.
 - 🔒 **Local & Private**: Uses **LlamaIndex + ChromaDB + Ollama** for local processing. No external API calls required.
+
 
 ---
 
@@ -28,7 +30,7 @@ The **Ingredient Risk Analyzer** allows users to evaluate cosmetic and skincare 
 
 - **LLM Integration**: LlamaIndex + Ollama (local models)
 
-- **Vector Database**: ChromaDB
+- **Vector Database & Local Embeddings**: ChromaDB + Local Embeddings (OllamaEmbedding)
 
 ---
 
