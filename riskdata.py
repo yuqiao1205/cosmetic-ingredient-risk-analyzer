@@ -646,5 +646,9 @@ RISK_DB = {
     "damascena flower oil": {
         "risk": "Low",
         "impact": "Damascena flower oil primarily hydrates and softens skin, offering antioxidant benefits for a youthful appearance."
+    },
+    "p": {
+        "risk": "Low",
+        "impact": "**PABA (Para-Aminobenzoic Acid)** primarily acts as a sunscreen filter, absorbing UVB rays. Generally safe in low concentrations."
     }
 }

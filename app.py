@@ -19,9 +19,6 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
-
-from riskdata import RISK_DB
-
 # Selenium imports
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -31,6 +28,8 @@ from selenium.common.exceptions import WebDriverException, TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+
+from riskdata import RISK_DB
 
 # =========================
 # Config & Setup
@@ -67,22 +66,7 @@ def ocr_from_image(image_path: str) -> str:
 # Web Scraping Functionality (New)
 # =========================
 # List of common user agents to rotate through
-
-
-def scrape_ingredients_from_url(url: str) -> str:
-    """
-    Fetches the content of a URL using a headless Selenium browser and attempts
-    to extract cosmetic ingredients. This method handles JavaScript-rendered pages.
-    """
-    options = Options()
-    options.add_argument("--headless") # Run in headless mode
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1920,1080")
-    
-    # Use a random user agent to mimic a real browser
-    USER_AGENTS = [
+USER_AGENTS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36",
@@ -94,33 +78,37 @@ def scrape_ingredients_from_url(url: str) -> str:
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
 ]
 
+def scrape_ingredients_from_url(url: str) -> str:
+    """
+    Fetches the content of a URL using a headless Selenium browser and attempts
+    to extract cosmetic ingredients. This method handles JavaScript-rendered pages.
+    """
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--window-size=1920,1080")
+    
     random_user_agent = random.choice(USER_AGENTS)
     options.add_argument(f"user-agent={random_user_agent}")
 
     driver = None
     try:
-        # Use WebDriverManager to automatically download and manage the driver
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
-        # Set a page load timeout
-        wait_time = 20 # Increased wait time for dynamic content
+        wait_time = 20
         driver.set_page_load_timeout(wait_time)
 
         print(f"Loading {url} with Selenium...")
         driver.get(url)
 
-        # Wait for a common element to be present to indicate page is ready
         WebDriverWait(driver, wait_time).until(
             EC.presence_of_element_located((By.TAG_NAME, "body"))
         )
-
-        # Get the fully rendered HTML content
         html_content = driver.page_source
-
-        # Now, use BeautifulSoup to parse the content as before
         soup = BeautifulSoup(html_content, 'html.parser')
         
-        # ... (rest of the web scraping logic is the same)
         potential_ingredients_sections = soup.find_all(
             lambda tag: tag.name in ['div', 'p', 'span', 'li', 'ul'] and 
             any(keyword in tag.get_text(strip=True).lower() for keyword in ['ingredients', 'composition', 'what\'s in it', 'full list'])
@@ -297,7 +285,7 @@ Task:
 - For High risk: include likely long-term impacts in 1 short sentence each.
 - If it shows Medium risk please include brief caution,otherwise no need to mention.
 
-- End with a one-sentence overall rationale that matches the score.
+- End with two or three sentences overall rationale that matches the score.
 Keep it to ~5 bulleted lines total.
 JSON:
 {json_payload}
@@ -469,8 +457,48 @@ def update_riskdata(new_entries: dict):
 # =========================
 INTRO = """Paste the full ingredient list of a product (e.g., a foundation) or upload a photo of the ingredients, or provide a URL to a product page.
 I will score it (Excellent / Poor / Bad), list high/medium risk ingredients, and summarize long-term impacts.
-Running completely locally with Gemma 2:4b and nomic-embed-text - no OpenAI API required!
+Running completely locally with Gemma3:4b and nomic-embed-text - no OpenAI or external API required!
 """
+def format_findings_for_display(findings: dict) -> str:
+    """Formats the analysis findings into a human-readable Markdown string."""
+    output = "### Ingredient Breakdown\n\n"
+    
+    # Organize ingredients by risk level
+    high_risk = sorted(findings.get('high_risk', []), key=lambda x: x['ingredient'])
+    medium_risk = sorted(findings.get('medium_risk', []), key=lambda x: x['ingredient'])
+    low_risk = sorted(findings.get('low_risk', []), key=lambda x: x['ingredient'])
+    unknown_risk = sorted(findings.get('unknown', []), key=lambda x: x['ingredient'])
+
+    if high_risk:
+        output += "#### 🔴 High Risk\n"
+        for item in high_risk:
+            output += f"- **{item['ingredient'].capitalize()}**: {item['impact']}\n"
+        output += "\n"
+
+    if medium_risk:
+        output += "#### 🟡 Medium Risk\n"
+        for item in medium_risk:
+            output += f"- **{item['ingredient'].capitalize()}**: {item['impact']}\n"
+        output += "\n"
+
+    if low_risk:
+        output += "#### 🟢 Low Risk\n"
+        for item in low_risk:
+            output += f"- **{item['ingredient'].capitalize()}**: {item['impact']}\n"
+        output += "\n"
+    
+    if unknown_risk:
+        output += "#### ⚪ Unknown Risk\n"
+        for item in unknown_risk:
+            output += f"- **{item['ingredient'].capitalize()}**: {item['impact']}\n"
+        output += "\n"
+
+    if not any([high_risk, medium_risk, low_risk, unknown_risk]):
+        output += "No ingredients were found or analyzed in this text.\n"
+
+    return output
+
+
 with gr.Blocks(title="Cosmetic Ingredient Safety – Local RAG") as demo:
     gr.Markdown("# 🧪 Cosmetic Ingredient Safety (Local Models + LlamaIndex + Chroma)")
     gr.Markdown(INTRO)
@@ -496,60 +524,64 @@ with gr.Blocks(title="Cosmetic Ingredient Safety – Local RAG") as demo:
         score_out = gr.Textbox(label="Overall Score", interactive=False)
     with gr.Row():
         explanation_out = gr.Markdown(label="Explanation")
-    details_json = gr.JSON(label="Structured Result (JSON)")
+    # Change from JSON to Markdown
+    details_out = gr.Markdown(label="Ingredient Breakdown")
 
     def run_pipeline_text(user_text):
         if not user_text:
-            return "", "Please enter an ingredient list.", None
+            return "", "Please enter an ingredient list.", ""
         result = analyze_product(user_text)
-        return result.get("overall_score", ""), result.get("explanation", ""), result
+        formatted_details = format_findings_for_display(result)
+        return result.get("overall_score", ""), result.get("explanation", ""), formatted_details
 
     def run_pipeline_image(image_path):
         if not image_path:
-            return "", "Please upload an image.", None
+            return "", "Please upload an image.", ""
         raw_text = ocr_from_image(image_path)
         if not raw_text:
-            return "", "Could not extract text from the image. Please try a clearer image.", None
+            return "", "Could not extract text from the image. Please try a clearer image.", ""
         ingredients_list_text = extract_ingredients_with_llm(raw_text)
         if not ingredients_list_text:
-            return "", "Could not extract a valid list of ingredients from the text. Please ensure the ingredients are clearly visible.", None
+            return "", "Could not extract a valid list of ingredients from the text. Please ensure the ingredients are clearly visible.", ""
         result = analyze_product(ingredients_list_text)
-        return result.get("overall_score", ""), result.get("explanation", ""), result
+        formatted_details = format_findings_for_display(result)
+        return result.get("overall_score", ""), result.get("explanation", ""), formatted_details
 
     def run_pipeline_url(url):
         if not url:
-            return "", "Please enter a URL.", None
+            return "", "Please enter a URL.", ""
         try:
             result = urlparse(url)
             if not all([result.scheme, result.netloc]):
-                return "", "Invalid URL format. Please enter a complete URL (e.g., https://www.example.com/product).", None
+                return "", "Invalid URL format. Please enter a complete URL (e.g., https://www.example.com/product).", ""
         except ValueError:
-            return "", "Invalid URL format. Please enter a complete URL (e.g., https://www.example.com/product).", None
+            return "", "Invalid URL format. Please enter a complete URL (e.g., https://www.example.com/product).", ""
         scraped_text = scrape_ingredients_from_url(url)
         if "Error:" in scraped_text or "No ingredient list found" in scraped_text:
-            return "", scraped_text, None
+            return "", scraped_text, ""
         ingredients_list_text = extract_ingredients_with_llm(scraped_text)
         if not ingredients_list_text:
-            return "", "Could not extract a valid list of ingredients from the scraped page. The page structure might be complex or the ingredient list is not clearly identifiable.", None
+            return "", "Could not extract a valid list of ingredients from the scraped page. The page structure might be complex or the ingredient list is not clearly identifiable.", ""
         result = analyze_product(ingredients_list_text)
-        return result.get("overall_score", ""), result.get("explanation", ""), result
+        formatted_details = format_findings_for_display(result)
+        return result.get("overall_score", ""), result.get("explanation", ""), formatted_details
 
     analyze_text_btn.click(
         run_pipeline_text,
         inputs=[input_box],
-        outputs=[score_out, explanation_out, details_json],
+        outputs=[score_out, explanation_out, details_out],
     )
 
     analyze_image_btn.click(
         run_pipeline_image,
         inputs=[image_input],
-        outputs=[score_out, explanation_out, details_json],
+        outputs=[score_out, explanation_out, details_out],
     )
 
     analyze_url_btn.click(
         run_pipeline_url,
         inputs=[url_input],
-        outputs=[score_out, explanation_out, details_json],
+        outputs=[score_out, explanation_out, details_out],
     )
 
 if __name__ == "__main__":
